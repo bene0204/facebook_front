@@ -1,0 +1,28 @@
+<mat-card class="mat-elevation-z6 write-post-form">
+  <mat-card-content>
+    <form [formGroup]="postForm">
+      <mat-form-field appearance="outline">
+        <textarea matInput
+                  placeholder="Thoughts..."
+                  formControlName="content"
+                  #content
+                  cdkTextareaAutosize
+                  [cdkAutosizeMinRows]="2"
+                  [cdkAutosizeMaxRows]="5"
+        >
+        </textarea>
+        <mat-hint align="end">
+          {{content.value.length}} / 2500
+        </mat-hint>
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+<mat-card-actions style="display: flex; justify-content: center">
+  <button mat-flat-button color="primary" (click)="onSubmit()">Post</button>
+</mat-card-actions>
+</mat-card>
+<div *ngFor="let post of posts">
+  <app-post [post]="post"></app-post>
+</div>
+
+

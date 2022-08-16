@@ -1,0 +1,25 @@
+<mat-card class="comment-card mat-elevation-z3">
+  <mat-card-header>
+
+    <mat-card-title>
+      <mat-icon>face</mat-icon>
+      <a (click)="viewProfile(comment.author.userId!)" class="profile-link">
+      {{comment.author.userName}}
+    </a>
+    </mat-card-title>
+
+    <mat-card-subtitle>
+      {{comment.createdAt.getDate()}}.
+      {{MONTHS[comment.createdAt.getMonth()]}}
+      {{comment.createdAt.getHours()}}:{{comment.createdAt.getMinutes()}}
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    {{comment.content}}
+  </mat-card-content>
+</mat-card>
+<div class="comment-children-indicator mat-elevation-z2" *ngIf="!showChildren && children.length > 0">
+  <a>
+    Show ({{children.length}}) answer(s)
+  </a>
+</div>

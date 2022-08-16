@@ -1,0 +1,23 @@
+mat-card {
+  max-width: 560px;
+  margin: 20px auto;
+  mat-card-header{
+    justify-content: center;
+  }
+  .form{
+    display: flex;
+    flex-direction: column;
+    .actions{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    button{
+      width: auto;
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+  }
+
+}

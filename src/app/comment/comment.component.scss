@@ -1,0 +1,29 @@
+.comment-card {
+  z-index: 2;
+  background: #3f51b5;
+  width: 80%;
+  margin: 10px auto;
+  color: white;
+
+  mat-card-subtitle {
+    color: #e3e3e3;
+  }
+}
+
+.comment-children-indicator {
+  text-align: center;
+  z-index: 1;
+  margin: 0;
+  transform: translate(50px, -12px);
+  background: #ff4081;
+  color: white;
+  width: 150px;
+  border-radius: 2px;
+
+  a{
+    cursor: pointer;
+  &:hover{
+    text-decoration: underline;
+  }
+  }
+}

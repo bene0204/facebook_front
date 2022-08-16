@@ -1,0 +1,64 @@
+<mat-card class="mat-elevation-z5 post-card">
+  <mat-card-header>
+    <mat-card-title>
+      <mat-icon>face</mat-icon>
+      <a (click)="viewProfile(post.author.userId!)" class="profile-link">
+        {{post.author.userName}}
+      </a>
+    </mat-card-title>
+    <mat-card-subtitle>
+      {{post.createdAt.getDate()}}.
+      {{MONTHS[post.createdAt.getMonth()]}}
+      {{post.createdAt.getHours()}}:{{post.createdAt.getMinutes()}}
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content style="font-size: larger">
+    {{post.content}}
+  </mat-card-content>
+  <hr>
+  <div style="display: flex; justify-content: space-between">
+    <p style="margin: 0">
+      <mat-icon>
+        thumb_up_alt
+      </mat-icon>
+      10
+    </p>
+    <a class="comment-indicator" (click)="showComments = !showComments"  *ngIf="comments.length > 0">
+      {{comments.length}} comment(s)
+    </a>
+  </div>
+  <hr>
+  <mat-card-actions style="display: flex; justify-content: space-around">
+<button mat-flat-button class="post-action-button" color="primary">Like</button>
+    <button mat-flat-button class="post-action-button" color="accent" (click)="showComments = !showComments">Comment</button>
+  </mat-card-actions>
+  <div *ngIf="showComments">
+    <mat-card class="mat-elevation-z6 write-comment-form">
+      <mat-card-content>
+        <form [formGroup]="commentForm">
+          <mat-form-field appearance="outline">
+        <textarea matInput
+                  placeholder="Comment goes here"
+                  formControlName="content"
+                  #content
+                  cdkTextareaAutosize
+                  [cdkAutosizeMinRows]="1"
+                  [cdkAutosizeMaxRows]="3"
+        >
+        </textarea>
+            <mat-hint align="end">
+              {{content.value.length}} / 500
+            </mat-hint>
+          </mat-form-field>
+        </form>
+      </mat-card-content>
+      <mat-card-actions style="display: flex; justify-content: center">
+        <button mat-flat-button color="accent" (click)="onSubmit()">Comment</button>
+      </mat-card-actions>
+    </mat-card>
+    <div *ngFor="let comment of comments">
+      <app-comment [comment]="comment" ></app-comment>
+    </div>
+  </div>
+
+</mat-card>
