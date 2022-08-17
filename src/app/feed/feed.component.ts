@@ -36,7 +36,6 @@ export class FeedComponent implements OnInit {
     this.http.post<PostModel>(`http://localhost:8080/users/${this.user?.userId}/post`, this.postForm.value)
       .subscribe({
         next: response => {
-          console.log(response)
         }
       })
     this.postForm.reset();
