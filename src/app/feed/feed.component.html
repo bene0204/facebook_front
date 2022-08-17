@@ -18,7 +18,7 @@
     </form>
   </mat-card-content>
 <mat-card-actions style="display: flex; justify-content: center">
-  <button mat-flat-button color="primary" (click)="onSubmit()">Post</button>
+  <button mat-flat-button color="primary" (click)="onSubmit()" [disabled]="!postForm.valid">Post</button>
 </mat-card-actions>
 </mat-card>
 <div *ngFor="let post of posts">

@@ -52,7 +52,14 @@ export class PostComponent implements OnInit {
     this.postService.getComments(this.post.postId)
       .subscribe({
         next: response => {
-
+          response.sort((a,b) => {
+            if(a.createdAt > b.createdAt){
+              return -1;
+            } else if (a.createdAt < b.createdAt) {
+              return 1;
+            }
+            return 0;
+          })
           this.comments = response;
         }
       })
@@ -63,6 +70,14 @@ export class PostComponent implements OnInit {
     this.postService.postComment(this.commentForm.value,this.post.postId,this.user!.userId!)
       .subscribe({
         next: response => {
+          response.sort((a,b) => {
+            if(a.createdAt > b.createdAt){
+              return -1;
+            } else if (a.createdAt < b.createdAt) {
+              return 1;
+            }
+            return 0;
+          })
           this.comments = response;
           this.commentForm.reset();
         }

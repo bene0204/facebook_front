@@ -52,8 +52,8 @@
           </mat-form-field>
         </form>
       </mat-card-content>
-      <mat-card-actions style="display: flex; justify-content: center">
-        <button mat-flat-button color="accent" (click)="onSubmit()">Comment</button>
+      <mat-card-actions>
+        <button mat-flat-button color="accent" (click)="onSubmit()" [disabled]="!commentForm.valid">Comment</button>
       </mat-card-actions>
     </mat-card>
     <div *ngFor="let comment of comments">
